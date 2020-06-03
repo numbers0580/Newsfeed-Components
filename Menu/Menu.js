@@ -54,6 +54,7 @@ function menuMaker(mItemsArr) {
   //Step 4
   menuBtn.addEventListener('click', function(event) {
     createdMenu.classList.toggle('menu--open');
+    createdMenu.style.transitionDuration = '2s';
   });
 
   //Step 5

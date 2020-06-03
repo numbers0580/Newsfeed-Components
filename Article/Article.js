@@ -140,6 +140,7 @@ function articleMaker(dataObj) {
   //Step 2
   articleSpanButton.addEventListener('click', function(event) {
     createdArticle.classList.toggle('article-open');
+    createdArticle.style.transitionDuration = '2s';
     //Stretch
     if(articleSpanButton.textContent === 'Open') {
       articleSpanButton.textContent = 'Hold';

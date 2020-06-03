@@ -131,7 +131,7 @@ function articleMaker(dataObj) {
   articleTitle.textContent = dataObj.title;
   articleDate.textContent = dataObj.date;
   //I had to create some text for the span to be able to test my code. This was not part of the instructions, but needed nonetheless.
-  articleSpanButton.textContent = 'Poke';
+  articleSpanButton.textContent = 'Open';
 
   articleContent[0].textContent = dataObj.firstParagraph;
   articleContent[1].textContent = dataObj.secondParagraph;
@@ -140,6 +140,16 @@ function articleMaker(dataObj) {
   //Step 2
   articleSpanButton.addEventListener('click', function(event) {
     createdArticle.classList.toggle('article-open');
+    //Stretch
+    if(articleSpanButton.textContent === 'Open') {
+      articleSpanButton.textContent = 'Hold';
+    }
+    if(articleSpanButton.textContent === 'Close') {
+      articleSpanButton.textContent = 'Open'
+    }
+    if(articleSpanButton.textContent === 'Hold') {
+      articleSpanButton.textContent = 'Close'
+    }
   });
 
   createdArticle.appendChild(articleTitle);

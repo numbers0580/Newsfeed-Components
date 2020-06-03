@@ -118,10 +118,9 @@ function articleMaker(dataObj) {
   let articleTitle = document.createElement('h2');
   let articleDate = document.createElement('p');
   let articleSpanButton = document.createElement('span');
-
   let articleContent = [];
+
   for(let i = 0; i < 3; i++) {
-    //articleContent[i] = document.createElement('p');
     articleContent.push(document.createElement('p'));
   }
 
@@ -131,6 +130,9 @@ function articleMaker(dataObj) {
 
   articleTitle.textContent = dataObj.title;
   articleDate.textContent = dataObj.date;
+  //I had to create some text for the span to be able to test my code. This was not part of the instructions, but needed nonetheless.
+  articleSpanButton.textContent = 'Poke';
+
   articleContent[0].textContent = dataObj.firstParagraph;
   articleContent[1].textContent = dataObj.secondParagraph;
   articleContent[2].textContent = dataObj.thirdParagraph;
@@ -142,9 +144,11 @@ function articleMaker(dataObj) {
 
   createdArticle.appendChild(articleTitle);
   createdArticle.appendChild(articleDate);
+
   for(let j = 0; j < 3; j++) {
     createdArticle.appendChild(articleContent[j]);
   }
+
   createdArticle.appendChild(articleSpanButton);
 
   //Step 3
@@ -158,7 +162,23 @@ data.forEach(articleObject => {
   document.querySelector('.articles').appendChild(articleData);
 });
 */
+
+//The forEach loop below is the method I'm most comfortable with. I copied and tested the arrow function above, and it works.
+//Since I'm still not comfortable with arrow functions, I commented it out to retain for future reference.
+let articleIndex = document.querySelector('.articles');
+
 data.forEach(function(articleObject) {
   const articleData = articleMaker(articleObject);
-  document.querySelector('.articles').appendChild(articleData);
+  articleIndex.appendChild(articleData);
 });
+
+//Step 5
+let newArticle = {
+  title: "From Lambda to Alpha",
+  date: "Jun 3rd, 2020",
+  firstParagraph: "Test paragraph 1, the intro paragraph.",
+  secondParagraph: "This then is the body paragrah of the article.",
+  thirdParagraph: "Finally, I conclude my test of this object with this paragraph."
+};
+
+articleIndex.appendChild(articleMaker(newArticle));
